@@ -1,7 +1,10 @@
 # 3DView.Measurements
 JavaScript 3D models viewing control with interactive measurements
 
-Description: 3D models viewing control with interactive measurements based on THREE.JS (http://threejs.org/)
+Description: 3D models viewing control with interactive measurements based on THREE.JS (http://threejs.org/),
+Supports distance, thickness, angle and radius measurements. 
+
+It is part of 3DView Chrome app https://chrome.google.com/webstore/detail/3dview/hhngciknjebkeffhafnaodkfidcdlcao
 
 Author: awesometeam / awesometeamone@gmail.com 
 
