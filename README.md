@@ -24,7 +24,7 @@ Link all necessary JS files from Three.js r73 (included)
 		<script src="js/Three.js.r73/examples/controls/OrbitControls.js"></script>
 		<script src="js/Three.js.r73/examples/loaders/STLLoader.js"></script>
 
-Link all necessary JS files from 3DVIew :
+Link all necessary JS files from 3DView :
 
 		<script src="js/3DView/measurements/MeasurementControls.js"></script>
 		<script src="js/3DView/measurements/Measurement.js"></script>
@@ -54,12 +54,16 @@ This code creates creates a renderer; loads the STL file; request the user to ad
  
 	} );
 	
-	//add measurement
-	view.addMeasurement(new THREE.MeasurementDistance())	
+	//.....
+	
+	//request user to make new measurement
+	view.addMeasurement(new THREE.MeasurementDistance());
 	//view.addMeasurement(new THREE.MeasurementThickness());
 	//view.addMeasurement(new THREE.MeasurementAngle());
 	//view.addMeasurement(new THREE.MeasurementRadius());
 
+	//.....
+	
 	//events
 	
 	//on measurement added
