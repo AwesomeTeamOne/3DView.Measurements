@@ -1,8 +1,8 @@
 # 3DView.Measurements
 JavaScript 3D models viewing control with interactive measurements
 
-Description: 3D models viewing control with interactive measurements based on [THREE.JS] (http://threejs.org/).
-Supports distance, thickness, angle and radius measurements. Accepts STL and other formats through standard [THREE.JS loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders)
+Description: 3D models viewing control with interactive measurements based on [Three.js] (http://threejs.org/).
+Supports distance, thickness, angle and radius measurements. Accepts STL and other formats using standard [Three.js loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders).
 It is part of [3DView Chrome app] (https://chrome.google.com/webstore/detail/3dview/hhngciknjebkeffhafnaodkfidcdlcao) development.
 
 Author: awesometeam / awesometeamone@gmail.com 
@@ -14,7 +14,7 @@ License: LGPL v3
 
 ### Usage ###
 
-Link all necessary JS files from THREE.JS r73 (included)  
+Link all necessary JS files from Three.js r73 (included)  
 
 		<script src="js/Three.js.r73/examples/libs/Detector.js"></script>
 
