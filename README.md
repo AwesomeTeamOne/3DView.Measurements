@@ -1,11 +1,13 @@
 # 3DView.Measurements
 JavaScript 3D models viewing control with interactive measurements
 
-Description: 3D models viewing control with interactive measurements based on THREE.JS (http://threejs.org/).
-Author: awesometeam / awesometeamone@gmail.com .
-License: LGPL v3.
+Description: 3D models viewing control with interactive measurements based on THREE.JS (http://threejs.org/)
 
-[Examples] (https://goo.gl/UG7T1l)
+Author: awesometeam / awesometeamone@gmail.com 
+
+License: LGPL v3
+
+[Example] (https://goo.gl/UG7T1l)
 
 
 ### Usage ###
