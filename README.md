@@ -19,9 +19,11 @@ Link all necessary JS files from Three.js r73 (included)
 		<script src="js/Three.js.r73/examples/libs/Detector.js"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
-		<script src="js/Three.js.r73/examples/renderers/projector.js"></script>
+		<script src="js/Three.js.r73/examples/renderers/CanvasRenderer.js"></script>
+		<script src="js/Three.js.r73/examples/renderers/Projector.js"></script>
 		<script src="js/Three.js.r73/examples/libs/ui.js"></script>
 		<script src="js/Three.js.r73/examples/controls/OrbitControls.js"></script>
+		<script src="js/Three.js.r73/examples/controls/TrackballControls.js"></script>
 		<script src="js/Three.js.r73/examples/loaders/STLLoader.js"></script>
 
 Link all necessary JS files from 3DView :
