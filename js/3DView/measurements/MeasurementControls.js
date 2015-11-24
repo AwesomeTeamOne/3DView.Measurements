@@ -331,8 +331,8 @@ THREE.MeasurementControls = function ( viewport, camera, container ) {
 						domElement.style.cursor = 'default';
 						scope.dragging = true;
 
-					} else	if (measurementGizmo.acceptPoints())
-						domElement.style.cursor = 'crosshair';
+					} else
+						domElement.style.cursor = measurementGizmo.acceptPoints() ? 'crosshair' : 'default';
 
 
 					event.cancel = true; //prevent other listeners from getting this event

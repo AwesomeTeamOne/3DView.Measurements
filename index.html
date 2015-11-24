@@ -73,6 +73,9 @@
 				view.addMeasurement(new THREE.MeasurementRadius());
 			">Measure Radius</button>			
 			<button onclick="
+				view.addMeasurement(new THREE.MeasurementInfo());
+			">Point Info</button>			
+			<button onclick="
 				view.clearMeasurements();
 			">Clear</button>			
 		</div>
@@ -94,6 +97,7 @@
 		<script src="js/3DView/measurements/Measurement.Thickness.js"></script>
 		<script src="js/3DView/measurements/Measurement.Angle.js"></script>
 		<script src="js/3DView/measurements/Measurement.Radius.js"></script>
+		<script src="js/3DView/measurements/Measurement.Info.js"></script>
 		<script src="js/3DView/3DView.Measurements.js"></script>
 
 
@@ -142,7 +146,7 @@
 					var descriptionDiv = document.createElement('div');
 					descriptionDiv.id = 'description_' + measurement.id;
 					descriptionDiv.className = 'measurement_description';
-					descriptionDiv.innerHTML = measurement.getDescription();
+					descriptionDiv.innerHTML = measurement.getType() + " = " + measurement.getValue() + " " + JSON.stringify(measurement.getInfo());
 					measurementDiv.appendChild(descriptionDiv);
 					
 					var removeButton = document.createElement('button');
@@ -162,9 +166,9 @@
 
 				var measurement = event.object;
 				if (measurement) {
-					var measurementDiv = document.getElementById('description_' + measurement.id);
-					if (measurementDiv)
-						measurementDiv.innerHTML = measurement.getType() + " = " + measurement.getValue() + " " + JSON.stringify(measurement.getInfo());
+					var descriptionDiv = document.getElementById('description_' + measurement.id);
+					if (descriptionDiv)
+						descriptionDiv.innerHTML = measurement.getType() + " = " + measurement.getValue() + " " + JSON.stringify(measurement.getInfo());
 				}
 				
 			} );

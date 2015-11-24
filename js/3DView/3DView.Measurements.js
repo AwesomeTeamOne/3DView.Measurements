@@ -72,6 +72,7 @@
 		if (geometry instanceof THREE.BufferGeometry) {
 			geometry = new THREE.Geometry().fromBufferGeometry(geometry);
 		}
+		geometry.mergeVertices();
 		geometry.computeFaceNormals();
 		geometry.computeBoundingSphere();
 		geometry.normalsNeedUpdate  = true;
