@@ -108,9 +108,9 @@ THREE.MeasurementGizmoInfo = function ( measurement, container ) {
 		var controlPoints = scope.getControlPointsWorld();
 		var geometry = this.selectedObject.geometry;
 		var facePoints = [
-			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.a]),
-			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.b]),
-			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.c])
+			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.a].clone()),
+			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.b].clone()),
+			this.selectedObject.localToWorld(geometry.vertices[this.selectedFace.c].clone())
 			];
 		var matrixWorldInverse = new THREE.Matrix4();
 		matrixWorldInverse.getInverse(this.selectedObject.parent.matrixWorld);
