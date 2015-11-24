@@ -416,8 +416,8 @@ THREE.MeasurementGizmo = function ( measurement, container ) {
 			this.text.setDisplay( 'block' );		
 			var coords = this.getScreenCoords(position, camera);
 			var rect = this.text.dom.getBoundingClientRect();
-			coords.x += this.container.dom.offsetLeft - rect.width/2;
-			coords.y += this.container.dom.offsetTop - rect.height/2;
+			coords.x -= rect.width/2;
+			coords.y -= rect.height/2;
 			
 			if (text) this.text.setValue( text );
 			this.text.setLeft(coords.x.toString() +'px'); 

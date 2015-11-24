@@ -10,8 +10,11 @@
  * License: LGPL v3
  *
  * Usage:
+ *	 	var renderer = new THREE.WebGLRenderer(); //for webgl rendering
+ *
  * 		//set view
- * 		var view = new View3D(document.getElementById( 'container' ), new THREE.WebGLRenderer());
+ *		//controlsType can be "trackball" or "orbit"
+ *		var view = new View3D(document.getElementById( 'container' ), renderer, {controlsType : "trackball"});
  * 		
  * 		//load STL file
  * 		new THREE.STLLoader().load( './models/3DView.stl', function ( geometry ) {
@@ -23,7 +26,7 @@
  *
  */
 
- View3D = function ( dom, renderer ) {	
+ View3D = function ( dom, renderer, settings ) {	
  
 	///////////////////////////public interface
  
@@ -51,11 +54,11 @@
 		scene.add( mesh );
 
 		var center = mesh.localToWorld(boundingSphere.center);
-		controls.target.copy( center );
-		controls.minDistance = boundingSphere.radius * 0.5;
-		controls.maxDistance = boundingSphere.radius * 3;
+		scope.controls.target.copy( center );
+		scope.controls.minDistance = boundingSphere.radius * 0.5;
+		scope.controls.maxDistance = boundingSphere.radius * 3;
 		
-		camera.position.set(0, 0, boundingSphere.radius * 2.1).add(center);
+		camera.position.set(0, 0, boundingSphere.radius * 2).add(center);
 		camera.lookAt( center );
 	}
 
@@ -101,8 +104,13 @@
 	
 	///////////////////////////private section
 	
-	var container = new UI.Panel();
-	var camera, controls, scene, measurementControls;
+	if (settings) {
+		this.controlsType = settings.controlsType;
+	}
+	
+	var scope = this;
+	var container = new UI.Panel().setPosition('relative');
+	var camera, scene, measurementControls;
 	var scope = this;	
 	
 	function init() {
@@ -117,11 +125,27 @@
 		camera.position.z = 50;
 
 		//controls
-		controls = new THREE.OrbitControls( camera, renderer.domElement );
-		controls.enableDamping = true;
-		controls.dampingFactor = 0.25;
-		controls.enableZoom = true;
-		controls.addEventListener( 'change', function () {
+		if (scope.controlsType == "orbit") {
+			scope.controls = new THREE.OrbitControls( camera, container.dom );
+			scope.controls.enableDamping = true;
+			scope.controls.dampingFactor = 0.25;
+			scope.controls.enableZoom = true;
+		} else {
+			scope.controls = new THREE.TrackballControls( camera, container.dom );
+
+			scope.controls.rotateSpeed = 10.0;
+			scope.controls.zoomSpeed = 3.0;
+			scope.controls.panSpeed = 0.8;
+
+			scope.controls.noZoom = false;
+			scope.controls.noPan = false;
+
+			scope.controls.staticMoving = true;
+			scope.controls.dynamicDampingFactor = 0.3;
+
+			scope.controls.keys = [ 65, 83, 68 ];
+		}
+		scope.controls.addEventListener( 'change', function () {
 			measurementControls.update();
 			render();
 		} );
@@ -158,7 +182,7 @@
 		scene.add( measurementControls );	
 
 		//logo
-		container.add(new UI.Panel().setTextContent( 'Powered by 3DView' ).setPosition('relative').setRight('0px').setBottom('30px').setOpacity('0.5').setDisplay('inline').setFontSize('12px').setFontWeight('normal').setPadding('0px').setMargin('0px').setCursor('default').setWidth('200px').setHeight('12px').setColor('#000') );		
+		container.add(new UI.Panel().setTextContent( 'Powered by 3DView' ).setPosition('absolute').setRight('0px').setBottom('30px').setOpacity('0.5').setDisplay('inline').setFontSize('12px').setFontWeight('normal').setPadding('0px').setMargin('0px').setCursor('default').setWidth('200px').setHeight('12px').setColor('#000') );		
 
 		//window
 		window.addEventListener( 'resize', onWindowResize, false );
@@ -180,7 +204,7 @@
 
 		requestAnimationFrame( animate );
 
-		controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
+		scope.controls.update(); // required if controls.enableDamping = true, or if controls.autoRotate = true
 		light.position.copy(camera.position);
 
 		render();

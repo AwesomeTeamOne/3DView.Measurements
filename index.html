@@ -81,9 +81,11 @@
 		<script src="js/Three.js.r73/examples/libs/Detector.js"></script>
 
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r73/three.min.js"></script>
-		<script src="js/Three.js.r73/examples/renderers/projector.js"></script>
+		<script src="js/Three.js.r73/examples/renderers/CanvasRenderer.js"></script>
+		<script src="js/Three.js.r73/examples/renderers/Projector.js"></script>
 		<script src="js/Three.js.r73/examples/libs/ui.js"></script>
 		<script src="js/Three.js.r73/examples/controls/OrbitControls.js"></script>
+		<script src="js/Three.js.r73/examples/controls/TrackballControls.js"></script>
 		<script src="js/Three.js.r73/examples/loaders/STLLoader.js"></script>
 		
 		<script src="js/3DView/measurements/MeasurementControls.js"></script>
@@ -97,14 +99,24 @@
 
 		<script>
 
-			if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-
-			//set renderer
-			var renderer = new THREE.WebGLRenderer();
-			renderer.setClearColor( new THREE.Color('#fff') ); //set background color
+			//setup renderer
+			var renderer;
+			if (Detector.webgl) {
+				//use webgl renderer
+				renderer = new THREE.WebGLRenderer({ antialias: true });
+			} else if (Detector.canvas) {
+				//fallback to canvas renderer
+				renderer = new THREE.CanvasRenderer();
+			} else {
+				//add error message to container
+				Detector.addGetWebGLMessage({parent: document.getElementById( 'container' )});
+			}
+			
+			//set background color
+			renderer.setClearColor( new THREE.Color('#fff') ); 
 			
 			//set view
-			var view = new View3D(document.getElementById( 'container' ), renderer);
+			var view = new View3D(document.getElementById( 'container' ), renderer, {controlsType : "trackball"});
 			
 			//load STL file
 			new THREE.STLLoader().load( './models/3DView.stl', function ( geometry ) {

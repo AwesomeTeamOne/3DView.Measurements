@@ -41,11 +41,13 @@ This code creates creates a renderer; loads the STL file; request the user to ad
 <script>
 
 	//set renderer
-	var renderer = new THREE.WebGLRenderer();
+	var renderer = new THREE.WebGLRenderer(); //for webgl rendering
+	//renderer = new THREE.CanvasRenderer(); //for canvas rendering
 	renderer.setClearColor( new THREE.Color('#fff') ); //set background color
 	
 	//set view
-	var view = new View3D(document.getElementById( 'container' ), renderer);
+	//controlsType can be "trackball" or "orbit"
+	var view = new View3D(document.getElementById( 'container' ), renderer, {controlsType : "trackball"});
 	
 	//load STL file from URL
 	new THREE.STLLoader().load( './models/3DView.stl', function ( geometry ) {
