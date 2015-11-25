@@ -1,28 +1,29 @@
 # 3DView.Measurements
 Advanced JavaScript 3D models viewing control with interactive measurements
 
-Description: 3D viewing control with interactive measurements based on [Three.js] (http://threejs.org/).
+### Description ###
+3D viewing control with interactive measurements based on [Three.js] (http://threejs.org/).
 
 Supports:
-	- All modern browsers (including mobile)
-	- WebGL or Canvas rendering
-	- STL (binary and ASCII) with color
-	- Many other formats with standard [Three.js loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders) (not included).
-	- Distance, thickness, angle and radius measurements
-	- Getting information about selected point on a 3D model (coordinates, face, normal)
-	- 2 types of rotation behaviour
-	- Background color change
+ * All modern browsers (including mobile)
+ * WebGL or Canvas rendering
+ * STL (binary and ASCII) with color
+ * Many other formats with standard [Three.js loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders) (not included).
+ * Distance, thickness, angle and radius measurements
+ * Getting information about selected point on a 3D model (coordinates, face, normal)
+ * 2 types of rotation behaviour
+ * Background color change
 	
 It is part of [3DView Chrome app] (https://chrome.google.com/webstore/detail/3dview/hhngciknjebkeffhafnaodkfidcdlcao) development.
 
+### License ###
+LGPL v3
+
 Author: awesometeam / awesometeamone@gmail.com 
 
-License: LGPL v3
+### Usage ###
 
 Live [sample] (https://goo.gl/UG7T1l)
-
-
-### Usage ###
 
 Link all necessary JS files from Three.js r73 (included)  
 
