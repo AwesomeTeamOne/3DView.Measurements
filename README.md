@@ -1,15 +1,25 @@
 # 3DView.Measurements
-JavaScript 3D models viewing control with interactive measurements
+Advanced JavaScript 3D models viewing control with interactive measurements
 
-Description: 3D models viewing control with interactive measurements based on [Three.js] (http://threejs.org/).
-Supports distance, thickness, angle and radius measurements. Accepts STL and other formats using standard [Three.js loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders).
+Description: 3D viewing control with interactive measurements based on [Three.js] (http://threejs.org/).
+
+Supports:
+	- All modern browsers (including mobile)
+	- WebGL or Canvas rendering
+	- STL (binary and ASCII) with color
+	- Many other formats with standard [Three.js loaders] (https://github.com/mrdoob/three.js/tree/master/examples/js/loaders) (not included).
+	- Distance, thickness, angle and radius measurements
+	- Getting information about selected point on a 3D model (coordinates, face, normal)
+	- 2 types of rotation behaviour
+	- Background color change
+	
 It is part of [3DView Chrome app] (https://chrome.google.com/webstore/detail/3dview/hhngciknjebkeffhafnaodkfidcdlcao) development.
 
 Author: awesometeam / awesometeamone@gmail.com 
 
 License: LGPL v3
 
-[Usage example] (https://goo.gl/UG7T1l)
+Live [sample] (https://goo.gl/UG7T1l)
 
 
 ### Usage ###
@@ -34,6 +44,7 @@ Link all necessary JS files from 3DView :
 		<script src="js/3DView/measurements/Measurement.Thickness.js"></script>
 		<script src="js/3DView/measurements/Measurement.Angle.js"></script>
 		<script src="js/3DView/measurements/Measurement.Radius.js"></script>
+		<script src="js/3DView/measurements/Measurement.Info.js"></script>
 		<script src="js/3DView/3DView.Measurements.js"></script>
 
 		
@@ -65,6 +76,7 @@ This code creates creates a renderer; loads the STL file; request the user to ad
 	//view.addMeasurement(new THREE.MeasurementThickness());
 	//view.addMeasurement(new THREE.MeasurementAngle());
 	//view.addMeasurement(new THREE.MeasurementRadius());
+	//view.addMeasurement(new THREE.MeasurementInfo());
 
 	//.....
 	
@@ -73,7 +85,7 @@ This code creates creates a renderer; loads the STL file; request the user to ad
 	//on measurement added
 	view.addEventListener( 'measurementAdded', function (event) {
 
-		//measurement is added (but configured yet) after user picks 1st point on the 3D model
+		//measurement is added after user picks 1st point on the 3D model
 		
 		var measurement = event.object;
 		//....
