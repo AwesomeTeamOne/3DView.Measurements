@@ -68,32 +68,32 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 
 	this.handleGizmos = {
 
-		CIRCLE: [
+		'CIRCLE': [
 			new THREE.Mesh( new THREE.TorusGeometry( 10, 0.3, 2, 36), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.2 } ) )
 		],
-		START: [
+		'START': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		MIDDLE: [
+		'MIDDLE': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		END: [
+		'END': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		CENTER: [
+		'CENTER': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		ARROW: [
+		'ARROW': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 0, 6, 8, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) ),
 			new THREE.Vector3( 0, 1, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		RADIUS: [
+		'RADIUS': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 1, 1, 1, 4, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		LINE: [
+		'LINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 1, 1, 1, 4, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0x000000, opacity: 0.2 } ) ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
@@ -102,20 +102,20 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 
 	this.pickerGizmos = {
 
-		ARROW: [
+		'ARROW': [
 			new THREE.Mesh( new THREE.SphereGeometry( 4 ), THREE.MeasurementPickerMaterial )
 		],
-		RADIUS: [
+		'RADIUS': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 3, 1, 4, 1, false ), THREE.MeasurementPickerMaterial ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		LINE: [
+		'LINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 3, 1, 4, 1, false ), THREE.MeasurementPickerMaterial ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		TEXT: [
+		'TEXT': [
 			new THREE.Mesh( new THREE.SphereGeometry( 4 ), THREE.MeasurementPickerMaterial )
 		]
 
@@ -145,7 +145,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 	
 	this.mustDragGizmo = function() {
 		if (this.controlPoints.length == 3)
-			return this.pickerGizmos["TEXT"][0];
+			return this.pickerGizmos['TEXT'][0];
 		return false;
 	}
 	
@@ -222,13 +222,13 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 				var normal = scope.circleFit.normal; //normal is calculated already by getValue();
 
 				//hide all
-				var handle = scope.handleGizmos.CIRCLE[0];
+				var handle = scope.handleGizmos['CIRCLE'][0];
 				
 				handle.visible = false;
-				scope.handleGizmos.CENTER[0].visible = false;
-				scope.handleGizmos.RADIUS[0].visible = false;
-				scope.handleGizmos.LINE[0].visible = false;
-				scope.handleGizmos.ARROW[0].visible = false;
+				scope.handleGizmos['CENTER'][0].visible = false;
+				scope.handleGizmos['RADIUS'][0].visible = false;
+				scope.handleGizmos['LINE'][0].visible = false;
+				scope.handleGizmos['ARROW'][0].visible = false;
 
 				if (normal.length() > 0.0001 && radius > 0) { //radius is not 0
 					var referencePoint = projectPointToPlane(controlPoints[3], controlPoints[1], normal);
@@ -243,7 +243,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 					handle.visible = true;
 					
 					//center point
-					var object = scope.handleGizmos.CENTER[0];
+					var object = scope.handleGizmos['CENTER'][0];
 					object.position.copy(center);
 					object.scale.set(width, width, width);
 					object.visible = true;
@@ -251,7 +251,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 
 					//radius
 					if (radius > 4*width) {
-						var object = scope.handleGizmos.RADIUS[0];
+						var object = scope.handleGizmos['RADIUS'][0];
 						
 						//radius handle
 						object.position.copy(center).add(lineCorrection);
@@ -260,7 +260,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 						object.visible = true;
 
 						//radius picker
-						var object = scope.pickerGizmos.RADIUS[0];
+						var object = scope.pickerGizmos['RADIUS'][0];
 						
 						object.position.copy(center).add(lineCorrection);
 						object.lookAt(referencePoint);
@@ -270,14 +270,14 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 					var arrowPosition = new THREE.Vector3().copy(lineCorrection).setLength(radius-width*2).add(center);
 
 					//arrow handle
-					var object = scope.handleGizmos.ARROW[0];
+					var object = scope.handleGizmos['ARROW'][0];
 					object.position.copy(arrowPosition);
 					object.lookAt(center);
 					object.scale.set(width, width, width);
 					object.visible = true;
 
 					//arrow picker
-					var object = scope.pickerGizmos.ARROW[0];
+					var object = scope.pickerGizmos['ARROW'][0];
 					object.position.copy(arrowPosition);
 					object.scale.set(width, width, width);
 
@@ -286,7 +286,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 					distance = referenceRadius - radius;
 					if (distance > 4*width) {
 						//line handle
-						var object = scope.handleGizmos.LINE[0];
+						var object = scope.handleGizmos['LINE'][0];
 						
 						object.position.copy(arrowPosition).add(lineCorrection);
 						object.lookAt(referencePoint);
@@ -294,7 +294,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 						object.visible = true;
 
 						//line picker
-						var object = scope.pickerGizmos.LINE[0];
+						var object = scope.pickerGizmos['LINE'][0];
 						
 						object.position.copy(arrowPosition).add(lineCorrection);
 						object.lookAt(referencePoint);
@@ -305,7 +305,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 				}
 				
 				//text picker
-				var object = scope.pickerGizmos.TEXT[0];
+				var object = scope.pickerGizmos['TEXT'][0];
 				object.position.copy(controlPoints[3]);
 				object.scale.set(width, width, width);
 
@@ -315,7 +315,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 			case 3:
 				//end point
 				var pointWidth = scope.getWidth(controlPoints[2], camera);
-				var object = scope.handleGizmos.END[0];
+				var object = scope.handleGizmos['END'][0];
 				object.position.copy(controlPoints[2]);
 				object.scale.set(pointWidth, pointWidth, pointWidth);
 				object.visible = true;
@@ -323,7 +323,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 			case 2:
 				//middle point
 				var pointWidth = scope.getWidth(controlPoints[1], camera);
-				var object = scope.handleGizmos.MIDDLE[0];
+				var object = scope.handleGizmos['MIDDLE'][0];
 				object.position.copy(controlPoints[1]);
 				object.scale.set(pointWidth, pointWidth, pointWidth);
 				object.visible = true;
@@ -332,7 +332,7 @@ THREE.MeasurementGizmoRadius = function ( measurement, container ) {
 			case 1:
 				//start point
 				var pointWidth = scope.getWidth(controlPoints[0], camera);
-				var object = scope.handleGizmos.START[0];
+				var object = scope.handleGizmos['START'][0];
 				object.position.copy(controlPoints[0]);
 				object.scale.set(pointWidth, pointWidth, pointWidth);
 				object.visible = true;

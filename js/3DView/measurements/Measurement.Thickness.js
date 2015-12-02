@@ -106,33 +106,33 @@ THREE.MeasurementGizmoThickness = function ( measurement, container ) {
 		if (horisontal.length()-6*width > 0) {
 		
 			//top line
-			var object = scope.handleGizmos.TOPLINE[0];
+			var object = scope.handleGizmos['TOPLINE'][0];
 			object.position.copy(topPoints[0]).add(horisontalCorrection);
 			object.lookAt(topPoints[1]);
 			object.scale.set(width, width, horisontal.length()-6*width);
 			object.visible = true;
 					
 			//arrows
-			var object = scope.handleGizmos.STARTARROW[0];
+			var object = scope.handleGizmos['STARTARROW'][0];
 			object.position.copy(topPoints[0]).add(arrowCorrection);
 			object.lookAt(topPoints[1]);
 			object.scale.set(width, width, width);
 			object.visible = true;
 
-			var object = scope.handleGizmos.ENDARROW[0];
+			var object = scope.handleGizmos['ENDARROW'][0];
 			object.position.copy(topPoints[1]).sub(arrowCorrection);
 			object.lookAt(topPoints[0]);
 			object.scale.set(width, width, width);
 			object.visible = true;
 			
 		} else {
-			scope.handleGizmos.TOPLINE[0].visible = false;
-			scope.handleGizmos.STARTARROW[0].visible = false;
-			scope.handleGizmos.ENDARROW[0].visible = false;
+			scope.handleGizmos['TOPLINE'][0].visible = false;
+			scope.handleGizmos['STARTARROW'][0].visible = false;
+			scope.handleGizmos['ENDARROW'][0].visible = false;
 		}
 
 		//top line picker
-		var object = scope.pickerGizmos.TOPLINE[0];
+		var object = scope.pickerGizmos['TOPLINE'][0];
 		object.position.copy(topPoints[0]).add(horisontalCorrection);
 		object.lookAt(topPoints[1]);
 		object.scale.set(width, width, Math.max(horisontal.length()-6*width, 0.00001));

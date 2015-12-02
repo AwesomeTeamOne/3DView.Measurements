@@ -49,7 +49,7 @@ THREE.MeasurementGizmoInfo = function ( measurement, container ) {
 
 	this.handleGizmos = {
 
-		START: [
+		'START': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		]
 	}
@@ -149,7 +149,7 @@ THREE.MeasurementGizmoInfo = function ( measurement, container ) {
 			case 1:
 				
 				//arrow
-				var object = scope.handleGizmos.START[0];
+				var object = scope.handleGizmos['START'][0];
 				object.position.copy(controlPoints[0]);
 				object.scale.set(width, width, width);
 				object.visible = true;

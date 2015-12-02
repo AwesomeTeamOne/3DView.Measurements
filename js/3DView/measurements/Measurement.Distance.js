@@ -63,33 +63,33 @@ THREE.MeasurementGizmoDistance = function ( measurement, container ) {
 
 	this.handleGizmos = {
 
-		TOPLINE: [
+		'TOPLINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 1, 1, 1, 4, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		STARTLINE: [
+		'STARTLINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 0.5, 0.5, 1, 4, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0x000000, opacity: 0.1 } ) ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		ENDLINE: [
+		'ENDLINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 0.5, 0.5, 1, 4, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0x000000, opacity: 0.1 } ) ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		START: [
+		'START': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		END: [
+		'END': [
 			new THREE.Mesh( new THREE.SphereGeometry( 2 ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) )
 		],
-		STARTARROW: [
+		'STARTARROW': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 0, 6, 8, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) ),
 			new THREE.Vector3( 0, 1, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		ENDARROW: [
+		'ENDARROW': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 0, 6, 8, 1, false ), new THREE.MeasurementGizmoMaterial( { color: 0xff0000, opacity: 0.4 } ) ),
 			new THREE.Vector3( 0, 1, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
@@ -98,18 +98,18 @@ THREE.MeasurementGizmoDistance = function ( measurement, container ) {
 
 	this.pickerGizmos = {
 
-		TOPLINE: [
+		'TOPLINE': [
 			new THREE.Mesh( new THREE.CylinderGeometry( 3, 3, 1, 4, 1, false ), THREE.MeasurementPickerMaterial ),
 			new THREE.Vector3( 0, 0.5, 0 ),
 			new THREE.Vector3( Math.PI/2, 0, 0 )
 		],
-		STARTARROW: [
+		'STARTARROW': [
 			new THREE.Mesh( new THREE.SphereGeometry( 4 ), THREE.MeasurementPickerMaterial )
 		],
-		ENDARROW: [
+		'ENDARROW': [
 			new THREE.Mesh( new THREE.SphereGeometry( 4 ), THREE.MeasurementPickerMaterial )
 		],
-		TEXT: [
+		'TEXT': [
 			new THREE.Mesh( new THREE.SphereGeometry( 4 ), THREE.MeasurementPickerMaterial )
 		]
 
@@ -226,41 +226,41 @@ THREE.MeasurementGizmoDistance = function ( measurement, container ) {
 				//lines
 				distance = controlPoints[0].distanceTo(controlPoints[3]);
 				if (distance > 2*width) {
-					var object = scope.handleGizmos.STARTLINE[0];
+					var object = scope.handleGizmos['STARTLINE'][0];
 					verticalCorrection = new THREE.Vector3().copy(controlPoints[3]).sub(controlPoints[0]).setLength(width * 2.0);
 					
 					object.position.copy(controlPoints[0]).add(verticalCorrection);
 					object.lookAt(topPoints[0]);
 					object.scale.set(width, width, distance-2*width);
 					object.visible = true;
-				} else scope.handleGizmos.STARTLINE[0].visible = false;
+				} else scope.handleGizmos['STARTLINE'][0].visible = false;
 				
 				distance = controlPoints[1].distanceTo(controlPoints[2]);
 				if (distance > 2*width) {
-					var object = scope.handleGizmos.ENDLINE[0];
+					var object = scope.handleGizmos['ENDLINE'][0];
 					verticalCorrection = new THREE.Vector3().copy(controlPoints[2]).sub(controlPoints[1]).setLength(width * 2.0);
 					
 					object.position.copy(controlPoints[1]).add(verticalCorrection);
 					object.lookAt(topPoints[1]);
 					object.scale.set(width, width, distance-2*width);
 					object.visible = true;
-				} else scope.handleGizmos.ENDLINE[0].visible = false;
+				} else scope.handleGizmos['ENDLINE'][0].visible = false;
 				
 			case 2:
 
 				//end point
 				var pointWidth = scope.getWidth(controlPoints[1], camera);
-				var object = scope.handleGizmos.END[0];
+				var object = scope.handleGizmos['END'][0];
 				object.position.copy(controlPoints[1]);
 				object.scale.set(pointWidth, pointWidth, pointWidth);
 				object.visible = true;
 				
 				//start-end pickers
-				var object = scope.pickerGizmos.STARTARROW[0];
+				var object = scope.pickerGizmos['STARTARROW'][0];
 				object.position.copy(topPoints[0]);
 				object.scale.set(width, width, width);
 
-				var object = scope.pickerGizmos.ENDARROW[0];
+				var object = scope.pickerGizmos['ENDARROW'][0];
 				object.position.copy(topPoints[1]);
 				object.scale.set(width, width, width);
 				
@@ -270,41 +270,41 @@ THREE.MeasurementGizmoDistance = function ( measurement, container ) {
 				
 				if (horisontal.length()-12*width > 0) {
 					//top line
-					var object = scope.handleGizmos.TOPLINE[0];
+					var object = scope.handleGizmos['TOPLINE'][0];
 					object.position.copy(topPoints[0]).add(horisontalCorrection);
 					object.lookAt(topPoints[1]);
 					object.scale.set(width, width, horisontal.length()-12*width);
 					object.visible = true;
 
 					//arrows
-					var object = scope.handleGizmos.STARTARROW[0];
+					var object = scope.handleGizmos['STARTARROW'][0];
 					object.position.copy(topPoints[0]).add(arrowCorrection);
 					object.lookAt(topPoints[1]);
 					object.scale.set(width, width, width);
 					object.visible = true;
 
-					var object = scope.handleGizmos.ENDARROW[0];
+					var object = scope.handleGizmos['ENDARROW'][0];
 					object.position.copy(topPoints[1]).sub(arrowCorrection);
 					object.lookAt(topPoints[0]);
 					object.scale.set(width, width, width);
 					object.visible = true;
 					
 					//top line picker
-					var object = scope.pickerGizmos.TOPLINE[0];
+					var object = scope.pickerGizmos['TOPLINE'][0];
 					object.position.copy(topPoints[0]).add(horisontalCorrection);
 					object.lookAt(topPoints[1]);
 					object.scale.set(width, width, horisontal.length()-12*width);
 					
 
 				} else {
-					scope.handleGizmos.TOPLINE[0].visible = false;
-					scope.handleGizmos.STARTARROW[0].visible = false;
-					scope.handleGizmos.ENDARROW[0].visible = false;
+					scope.handleGizmos['TOPLINE'][0].visible = false;
+					scope.handleGizmos['STARTARROW'][0].visible = false;
+					scope.handleGizmos['ENDARROW'][0].visible = false;
 				}
 
 				//text picker
 				var midPoint = new THREE.Vector3().copy(topPoints[0]).add(topPoints[1]).divideScalar(2);
-				var object = scope.pickerGizmos.TEXT[0];
+				var object = scope.pickerGizmos['TEXT'][0];
 				object.position.copy(midPoint);
 				object.scale.set(width, width, width);
 
@@ -315,7 +315,7 @@ THREE.MeasurementGizmoDistance = function ( measurement, container ) {
 			case 1:
 				//start point
 				var pointWidth = scope.getWidth(controlPoints[0], camera);
-				var object = scope.handleGizmos.START[0];
+				var object = scope.handleGizmos['START'][0];
 				object.position.copy(controlPoints[0]);
 				object.scale.set(pointWidth, pointWidth, pointWidth);
 				object.visible = true;
