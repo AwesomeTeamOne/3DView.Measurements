@@ -258,7 +258,7 @@ THREE.MeasurementGizmo = function ( measurement, container ) {
 
 		for ( var j in this.handles.children ) this.handles.children[j].visible = false;
 		for ( var j in this.pickers.children ) this.pickers.children[j].visible = showPickers;
-		if (this.text) this.text.setDisplay( 'block' );
+		if (this.text && this.text.dom.textContent) this.text.setDisplay( 'block' );
 		this.measurement.visible = true;
 
 	}
@@ -418,10 +418,17 @@ THREE.MeasurementGizmo = function ( measurement, container ) {
 			var rect = this.text.dom.getBoundingClientRect();
 			coords.x -= rect.width/2;
 			coords.y -= rect.height/2;
+
+			var containerRect = this.container.dom.getBoundingClientRect();
 			
 			if (text) this.text.setValue( text );
 			this.text.setLeft(coords.x.toString() +'px'); 
 			this.text.setTop(coords.y.toString() +'px'); 
+			
+			rect = this.text.dom.getBoundingClientRect();
+			if (rect.width > 0 && rect.height > 0 && (rect.left > containerRect.right || rect.right < containerRect.left || rect.top > containerRect.bottom || rect.bottom < containerRect.top))
+				this.text.setDisplay( 'none' );		
+			
 		}
 	}
 	
@@ -439,7 +446,8 @@ THREE.MeasurementGizmo = function ( measurement, container ) {
 
 	this.restore = function() {
 		if (this.container && this.text) {
-			this.text.setDisplay( 'block' );
+			if (this.text.dom.textContent)
+				this.text.setDisplay( 'block' );
 			this.container.add(this.text);
 		}
 	}
