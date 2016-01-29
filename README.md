@@ -23,7 +23,7 @@ Author: awesometeam / awesometeamone@gmail.com
 
 ### Usage ###
 
-[Live sample] (https://goo.gl/UG7T1l)
+[Live sample] (http://goo.gl/KPSy5e)
 
 Link all necessary JS files from Three.js r73 (included)  
 
