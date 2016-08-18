@@ -23,7 +23,7 @@ Author: awesometeam / awesometeamone@gmail.com
 
 ### Usage ###
 
-[Live sample] (http://goo.gl/KPSy5e)
+[Live sample] (http://shapequote.com/3DView.Measurements/)
 
 Link all necessary JS files from Three.js r73 (included)  
 
